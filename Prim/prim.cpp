@@ -1,66 +1,47 @@
 #include<bits/stdc++.h> 
-using namespace std; 
-main() 
-{ 
-    int numVertices, numEdges;
-    vector<vector<pair<int, int>>> graph; //coisa feia da porr
+using namespace std;
+#include "../Graph.hpp"
 
-    cin >> numVertices >> numEdges;
+int prim(Graph graph, int source) {
 
-    graph.resize(numVertices + 1);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    int mstCost = 0;
+    vector<bool> visited(graph.numVertices, false);
 
-    for (int i=0;i<numEdges;i++) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        graph[u].push_back(make_pair(w, v));
-        graph[v].push_back(make_pair(w, u));
-    }
+    visited[source] = true;
 
-    int index = 0;
-    for(auto i : graph) {
-        cout << index++ << ": " << endl ;
-        for(auto j : i) {
-            cout << "\t" << j.first << " " << j.second << endl;
+    AdjacencyList::iterator i;
+    for (i = graph.adjLists[source].begin() ; i != graph.adjLists[source].end(); i++) {
+        if(!visited[i->first]) {
+            pq.push({i->second, i->first});
         }
     }
 
-    cout << endl << endl;
-
-    vector<bool> visited;
-    visited.resize(numVertices + 1, false);
-
-    priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<tuple<int, int, int>>> pq; // lixo
-
-        // cout << "BOTANO";
-    for(auto v : graph[1]){
-		pq.push(make_tuple(v.first, 1, v.second));
-	}
-    visited[1] = true;
-
-    int cost = 0;
-    vector<pair<int, int>> path;
-    path.resize(numVertices + 1);
-
     while(!pq.empty()) {
-        tuple<int, int , int> deq = pq.top();
-        pq.pop();
-        // cout << "AAAAAAA: " << get<2>(deq);
-        if(!visited[get<2>(deq)]) {
-            cost += get<0>(deq);
-            cout << "SOMANDO: " << get<0>(deq) << " A PARTIR DO " << get<1>(deq) << endl;
-            cout << "CUSTO: " << cost << endl;
-            path[get<2>(deq)] = make_pair(get<1>(deq), get<0>(deq));
-            visited[get<2>(deq)] = true;
-            for(int i=0; i < graph[get<2>(deq)].size(); i++) {
-                if(!visited[graph[get<2>(deq)][i].second]) {
-                    cout << "COLOCANDO " << graph[get<2>(deq)][i].first << ", " << get<2>(deq) << ", " << graph[get<2>(deq)][i].second << endl; 
-                    pq.push(make_tuple(graph[get<2>(deq)][i].first, get<2>(deq), graph[get<2>(deq)][i].second));
+
+        pair<int, int> deq = pq.top(); pq.pop();
+        
+        if(!visited[deq.second]) {
+            visited[deq.second] = true;
+            mstCost += deq.first;            
+            AdjacencyList::iterator i;
+            for (i = graph.adjLists[deq.second].begin() ; i != graph.adjLists[deq.second].end(); i++) {
+                if(!visited[i->first]) {
+                    pq.push({i->second, i->first});
                 }
             }
         }
-
     }
 
-    cout << cost << endl;
+    return mstCost;
+}
 
+
+int main() 
+{ 
+    Graph graph = buildGraph();
+
+    cout << "MST cost: " << prim(graph, 0) << endl;
+
+    return 0;
 } 
