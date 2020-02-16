@@ -22,4 +22,6 @@ class Graph {
 
 Graph buildGraph();
 
+Graph buildDirectedGraph();
+
 #endif

@@ -80,3 +80,20 @@ Graph buildGraph() {
     return graph;
 
 }
+
+Graph buildDirectedGraph() {
+
+    int numVertices, numEdges, src, dest, weigth;
+
+    cin >> numVertices >> numEdges;
+
+    Graph graph(numVertices);
+
+    for (int i=0;i<numEdges;i++) {
+        int u, v, w;
+        cin >> src >> dest >> weigth;
+        graph.addEdge(src, dest, weigth);
+    }
+
+    return graph;
+}

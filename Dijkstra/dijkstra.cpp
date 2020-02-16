@@ -5,7 +5,7 @@ using namespace std;
 void dijkstra(Graph graph, int source) {
 
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    int mstCost = 0;
+
     vector<bool> visited(graph.numVertices, false);
     vector<int> dist(graph.numVertices, INT_MAX);
 
@@ -30,8 +30,9 @@ void dijkstra(Graph graph, int source) {
     }
 
     cout << "from \t| to \t| dist" << endl;
-    for (int i = 0; i < graph.numVertices; ++i)
+    for (int i = 0; i < graph.numVertices; ++i) {
         cout << source << "\t| " << i << "\t| " << dist[i] << endl;
+    }
 }
 
 int main() 
