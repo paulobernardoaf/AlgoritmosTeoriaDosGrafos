@@ -6,7 +6,9 @@ using namespace std;
 
 typedef list<pair<int, int>> AdjacencyList;
 
-typedef vector<pair<int, pair<int, int>>> EdgeVector;
+typedef pair<int, pair<int, int>> Edge;
+
+typedef vector<Edge> EdgeVector;
 
 class Graph {
     public:

@@ -13,26 +13,6 @@ void Graph::addEdge(int src, int dest, int weight){
     this->numEdges++;
 }
 
-EdgeVector Graph::getEdges() {
-
-    EdgeVector result = EdgeVector(this->numEdges);
-
-    for(int i = 0; i < this->numVertices; i++) {
-        
-        AdjacencyList::iterator j;
-        for (j = this->adjLists[i].begin(); j != this->adjLists[i].end(); j++) {
-            int v = j->first;
-            int w = j->second;
-
-            pair<int, pair<int, int>> weigthPair = {w, {i, v}};
-
-            result.push_back(weigthPair);
-        }
-    }
-
-    sort(result.begin(), result.end()); 
-    return result;
-}
 
 int Graph::getEdgeCost(int src, int dest) {
 
