@@ -33,11 +33,11 @@ void bellmanFord(Graph graph, int source) {
 
     if(negativeCycle) {
         cout << "Graph contains a negative cycle!" << endl;
-    } else {
-        cout << "from \t| to \t| dist" << endl;
-        for (int i = 0; i < graph.numVertices; ++i) {
-            cout << source << "\t| " << i << "\t| " << dist[i] << endl;
-        }
+    }
+     
+    cout << "from \t| to \t| dist" << endl;
+    for (int i = 0; i < graph.numVertices; ++i) {
+        cout << source << "\t| " << i << "\t| " << dist[i] << endl;
     }
 
 }
