@@ -9,5 +9,5 @@ make
 ## To run:
 On the main directory type:
 ```
-./executable_name < ./inputs/executableInput
+./executableName < ./inputs/executableInput
 ```
