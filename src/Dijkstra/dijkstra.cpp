@@ -1,10 +1,10 @@
 #include<bits/stdc++.h> 
-#include "../Graph.hpp"
+#include "../../include/Graph.hpp"
 using namespace std; 
 
 void dijkstra(Graph graph, int source) {
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<IntPair, vector<IntPair>, greater<IntPair>> pq;
 
     vector<bool> visited(graph.numVertices, false);
     vector<int> dist(graph.numVertices, INT_MAX);
@@ -15,7 +15,7 @@ void dijkstra(Graph graph, int source) {
 
     while(!pq.empty()) {
 
-        pair<int, int> deq = pq.top(); pq.pop();
+        IntPair deq = pq.top(); pq.pop();
         
         if(!visited[deq.second]) {
             visited[deq.second] = true;         

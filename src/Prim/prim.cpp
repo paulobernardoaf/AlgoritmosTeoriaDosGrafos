@@ -1,10 +1,10 @@
 #include<bits/stdc++.h> 
+#include "../../include/Graph.hpp"
 using namespace std;
-#include "../Graph.hpp"
 
 int prim(Graph graph, int source) {
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<IntPair, vector<IntPair>, greater<IntPair>> pq;
     int mstCost = 0;
     vector<bool> visited(graph.numVertices, false);
 
@@ -19,7 +19,7 @@ int prim(Graph graph, int source) {
 
     while(!pq.empty()) {
 
-        pair<int, int> deq = pq.top(); pq.pop();
+        IntPair deq = pq.top(); pq.pop();
         
         if(!visited[deq.second]) {
             visited[deq.second] = true;

@@ -1,10 +1,10 @@
 #include<bits/stdc++.h> 
-#include "../Graph.hpp"
+#include "../../include/Graph.hpp"
 using namespace std; 
 
 void bellmanFord(Graph graph, int source) {
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<IntPair, vector<IntPair>, greater<IntPair>> pq;
     bool negativeCycle = false;
 
     vector<int> dist(graph.numVertices, INT_MAX);
@@ -34,7 +34,6 @@ void bellmanFord(Graph graph, int source) {
     if(negativeCycle) {
         cout << "Graph contains a negative cycle!" << endl;
     } else {
-
         cout << "from \t| to \t| dist" << endl;
         for (int i = 0; i < graph.numVertices; ++i) {
             cout << source << "\t| " << i << "\t| " << dist[i] << endl;

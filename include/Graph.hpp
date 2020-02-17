@@ -4,9 +4,11 @@
 #include<bits/stdc++.h> 
 using namespace std; 
 
-typedef list<pair<int, int>> AdjacencyList;
+typedef pair<int, int> IntPair;
 
-typedef pair<int, pair<int, int>> Edge;
+typedef list<IntPair> AdjacencyList;
+
+typedef pair<int, IntPair> Edge;
 
 typedef vector<Edge> EdgeVector;
 

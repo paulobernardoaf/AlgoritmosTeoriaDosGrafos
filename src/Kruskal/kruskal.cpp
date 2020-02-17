@@ -1,5 +1,5 @@
 #include<bits/stdc++.h> 
-#include "../Graph.hpp"
+#include "../../include/Graph.hpp"
 using namespace std; 
 
 class UnionFind {
@@ -90,5 +90,5 @@ int main()
 { 
     Graph graph = buildDirectedGraph();
 
-    cout << kruskal(graph);    
+    cout << "MST Cost: " << kruskal(graph);    
 } 
