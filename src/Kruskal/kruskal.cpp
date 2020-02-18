@@ -90,5 +90,5 @@ int main()
 { 
     Graph graph = buildDirectedGraph();
 
-    cout << "MST Cost: " << kruskal(graph);    
+    cout << "MST Cost: " << kruskal(graph) << endl;    
 } 
